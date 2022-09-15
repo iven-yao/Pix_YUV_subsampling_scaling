@@ -31,10 +31,14 @@ In antialiasing, we do an average on it's neighbors of 3x3 kernel.
 here's the conversion matrix multiplication used in this program:
 RGB to YUV:
 |Y|   |0.299  0.587  0.114| |R|
+
 |U| = |0.596 -0.274 -0.322| |G|
+
 |V|   |0.211 -0.523  0.312| |B|
 
 YUV to RGB:
 |R|   |1.000  0.956  0.621| |Y|
+
 |G| = |1.000 -0.272 -0.647| |U|
+
 |B|   |1.000 -1.106  1.703| |V|
