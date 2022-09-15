@@ -29,7 +29,7 @@ After subsampling, we convert YUV back to RGB, and do scaling and antialiasing.
 In antialiasing, we do an average on it's neighbors of 3x3 kernel.
 
 here's the conversion matrix multiplication used in this program:
-RGB to YUV:
+RGB to YUV:</br>
 |Y|   |0.299  0.587  0.114| |R|
 
 |U| = |0.596 -0.274 -0.322| |G|
