@@ -176,10 +176,10 @@ public class ImageDisplay {
 			{
 				int orig_x = Math.round(x*wStep);
 				int orig_y = Math.round(y*hStep);
-				int r,g,b, count = 1;
-				r = outputRGB[orig_y][orig_x].r;
-				g = outputRGB[orig_y][orig_x].g;
-				b = outputRGB[orig_y][orig_x].b;
+				int r,g,b, count = 4;
+				r = outputRGB[orig_y][orig_x].r * 4;
+				g = outputRGB[orig_y][orig_x].g * 4;
+				b = outputRGB[orig_y][orig_x].b * 4;
 				if(antialiasing == 1)
 				{					
 					/* antialiasing with kernel 3x3
@@ -189,10 +189,10 @@ public class ImageDisplay {
 					 */
 					if(orig_x > 0)
 					{
-						count++;
-						r += outputRGB[orig_y][orig_x-1].r;
-						g += outputRGB[orig_y][orig_x-1].g;
-						b += outputRGB[orig_y][orig_x-1].b;
+						count += 2;
+						r += outputRGB[orig_y][orig_x-1].r * 2;
+						g += outputRGB[orig_y][orig_x-1].g * 2;
+						b += outputRGB[orig_y][orig_x-1].b * 2;
 					}
 					/*
 					 * __|_#|__
@@ -201,10 +201,10 @@ public class ImageDisplay {
 					 */
 					if(orig_y > 0)
 					{
-						count++;
-						r += outputRGB[orig_y-1][orig_x].r;
-						g += outputRGB[orig_y-1][orig_x].g;
-						b += outputRGB[orig_y-1][orig_x].b;
+						count += 2;
+						r += outputRGB[orig_y-1][orig_x].r * 2;
+						g += outputRGB[orig_y-1][orig_x].g * 2;
+						b += outputRGB[orig_y-1][orig_x].b * 2;
 					}
 					/*
 					 * _#|__|__
@@ -225,10 +225,10 @@ public class ImageDisplay {
 					 */
 					if(orig_x < width-1)
 					{
-						count++;
-						r += outputRGB[orig_y][orig_x+1].r;
-						g += outputRGB[orig_y][orig_x+1].g;
-						b += outputRGB[orig_y][orig_x+1].b;
+						count += 2;
+						r += outputRGB[orig_y][orig_x+1].r * 2;
+						g += outputRGB[orig_y][orig_x+1].g * 2;
+						b += outputRGB[orig_y][orig_x+1].b * 2;
 					}
 					/*
 					 * __|__|__
@@ -237,17 +237,17 @@ public class ImageDisplay {
 					 */
 					if(orig_y < height-1)
 					{
-						count++;
-						r += outputRGB[orig_y+1][orig_x].r;
-						g += outputRGB[orig_y+1][orig_x].g;
-						b += outputRGB[orig_y+1][orig_x].b;
+						count += 2;
+						r += outputRGB[orig_y+1][orig_x].r * 2;
+						g += outputRGB[orig_y+1][orig_x].g * 2;
+						b += outputRGB[orig_y+1][orig_x].b * 2;
 					}
 					/*
 					 * __|__|__
 					 * __|__|__
 					 *   |  |#
 					 */
-					if(orig_x < width+1 && orig_y < height-1)
+					if(orig_x < width-1 && orig_y < height-1)
 					{
 						count++;
 						r += outputRGB[orig_y+1][orig_x+1].r;
@@ -259,7 +259,7 @@ public class ImageDisplay {
 					 * __|__|__
 					 *   |  |
 					 */
-					if(orig_x < width+1 && orig_y > 0)
+					if(orig_x < width-1 && orig_y > 0)
 					{
 						count++;
 						r += outputRGB[orig_y-1][orig_x+1].r;
@@ -278,11 +278,10 @@ public class ImageDisplay {
 						g += outputRGB[orig_y+1][orig_x-1].g;
 						b += outputRGB[orig_y+1][orig_x-1].b;
 					}
-
-					r = r/count;
-					g = g/count;
-					b = b/count;
 				}
+				r = r/count;
+				g = g/count;
+				b = b/count;
 				int pix = 0xff000000 | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
 				output.setRGB(x,y,pix);
 			}
