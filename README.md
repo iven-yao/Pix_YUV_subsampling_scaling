@@ -24,8 +24,6 @@ A: int to represent performing antialiasing in the final result or not, 1 as tru
 3. java ImageDisplay ./test.rgb 1 2 2 1.0 1.0 0  
   The output is not scaled in size, but the U and V channels are subsampled by 2. No
   subsampling in the Y channels.
-  
----
 
 ## results
 
