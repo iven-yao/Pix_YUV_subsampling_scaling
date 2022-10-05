@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
@@ -43,7 +42,7 @@ public class ImageDisplay {
 	YUV[][] convertedYUV = new YUV[height][width];
 	RGB[][] outputRGB = new RGB[height][width];
 
-	private YUV rgbToYUV(RGB rgb){
+	private YUV RGBtoYUV(RGB rgb){
 		double y = 0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b;
 		double u = 0.596*rgb.r - 0.274*rgb.g - 0.322*rgb.b;
 		double v = 0.211*rgb.r - 0.523*rgb.g + 0.312*rgb.b;
@@ -51,7 +50,7 @@ public class ImageDisplay {
 		return new YUV(y,u,v);
 	}
 
-	private RGB yuvToRGB(YUV yuv){
+	private RGB YUVtoRGB(YUV yuv){
 		int r = (int)(1*yuv.y + 0.956*yuv.u + 0.621*yuv.v);
 		int g = (int)(1*yuv.y - 0.272*yuv.u - 0.647*yuv.v);
 		int b = (int)(1*yuv.y - 1.106*yuv.u + 1.703*yuv.v);
@@ -102,9 +101,11 @@ public class ImageDisplay {
 					// System.out.println(tmp);
 
 					inputRGB[y][x] = rgb;
-					convertedYUV[y][x] = rgbToYUV(rgb);
+					convertedYUV[y][x] = RGBtoYUV(rgb);
 				}
 			}
+
+			raf.close();
 		}
 		catch (FileNotFoundException e) 
 		{
@@ -156,7 +157,7 @@ public class ImageDisplay {
 		{
 			for(int x = 0; x < width; x++)
 			{
-				RGB rgb = yuvToRGB(convertedYUV[y][x]);
+				RGB rgb = YUVtoRGB(convertedYUV[y][x]);
 				int r = rgb.r;
 				int g = rgb.g;
 				int b = rgb.b; 
