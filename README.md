@@ -5,7 +5,7 @@ and reproduce the missing value by average of neighbor values to mimic subsampli
 After subsampling, we convert YUV back to RGB, and do scaling and antialiasing.  
 In antialiasing, we do an average on it's neighbors of 3x3 kernel.  
 
-## to execute:  
+## to execute
 javac ImageDisplay.java  
 java ImageDisplay rgb_file Y U V Sw Sh A  
 rgb_file: string to rgb file path  
@@ -27,6 +27,6 @@ A: int to represent performing antialiasing in the final result or not, 1 as tru
   
 ---
 
-## results:
+## results
 
 
