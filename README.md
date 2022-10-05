@@ -1,5 +1,9 @@
 # pixteddy
 A simple java program that does yuv subsampling and scaling.
+In this program, we converting RGB into YUV, we than throw away part of YUV samples based on subsampling parameters
+and reproduce the missing value by average of neighbor values to mimic subsampling.  
+After subsampling, we convert YUV back to RGB, and do scaling and antialiasing.  
+In antialiasing, we do an average on it's neighbors of 3x3 kernel.  
 
 ## to execute:  
 javac ImageDisplay.java  
@@ -23,8 +27,6 @@ A: int to represent performing antialiasing in the final result or not, 1 as tru
   
 ---
 
-In this program, we converting RGB into YUV, we than throw away part of YUV samples based on subsampling parameters
-and reproduce the missing value by average of neighbor values to mimic subsampling.
-After subsampling, we convert YUV back to RGB, and do scaling and antialiasing.
-In antialiasing, we do an average on it's neighbors of 3x3 kernel.
+## results:
+
 
