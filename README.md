@@ -8,10 +8,10 @@ In antialiasing, we do an average on it's neighbors of 3x3 kernel.
 ## to execute
 **javac ImageDisplay.java**  
 **java ImageDisplay rgb_file Y U V Sw Sh A**  
-*rgb_file: string to rgb file path  
-*Y,U,V: int to represent the subsample of YUV channels respectively. 1 suggesting no subsampling and n suggesting a sub sampling by n  
-*Sw,Sh: float to represent the scaling ratio of width and height respectively. should be a positive number not larger than 1.0  
-*A: int to represent performing antialiasing in the final result or not, 1 as true, 0 as false  
+* rgb_file: string to rgb file path  
+* Y,U,V: int to represent the subsample of YUV channels respectively. 1 suggesting no subsampling and n suggesting a sub sampling by n  
+* Sw,Sh: float to represent the scaling ratio of width and height respectively. should be a positive number not larger than 1.0  
+* A: int to represent performing antialiasing in the final result or not, 1 as true, 0 as false  
 
 ### e.g.  
 1. java ImageDisplay ./test.rgb 1 1 1 1.0 1.0 0  
