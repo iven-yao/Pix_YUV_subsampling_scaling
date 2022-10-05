@@ -1,5 +1,6 @@
 # pixteddy
-A simple java program that does yuv subsampling and scaling.
+A simple java program that does yuv subsampling and scaling.  
+  
 In this program, we converting RGB into YUV, we than throw away part of YUV samples based on subsampling parameters
 and reproduce the missing value by average of neighbor values to mimic subsampling.  
 After subsampling, we convert YUV back to RGB, and do scaling and antialiasing.  
