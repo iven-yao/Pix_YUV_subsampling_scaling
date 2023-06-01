@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
@@ -323,6 +325,14 @@ public class ImageDisplay {
 
 		lbIm1 = new JLabel(new ImageIcon(imgOne));
 		lbIm2 = new JLabel(new ImageIcon(scaled));
+
+		File resultFile = new File("./testOutput/result.jpg");
+		try {
+			ImageIO.write(scaled, "jpg", resultFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
